@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dudu ❤️ Bubu</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+body{
+  background:#ffe6ea;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.page{
+  display:none;
+  text-align:center;
+  width:100%;
+  padding:20px;
+}
+
+.page.active{
+  display:block;
+}
+
+video{
+  width:220px;
+  border-radius:16px;
+  margin-bottom:15px;
+}
+
+h2{ margin-bottom:8px; }
+
+p{
+  font-size:14px;
+  margin-bottom:18px;
+  opacity:0.85;
+}
+
+.btns{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  position:relative;
+}
+
+button{
+  padding:10px 24px;
+  font-size:16px;
+  border:none;
+  border-radius:25px;
+  cursor:pointer;
+}
+
+.yes{
+  background:#ff5c8a;
+  color:white;
+}
+
+.no{
+  background:white;
+  color:#333;
+  position:relative;
+}
+
+/* Branding */
+.footer{
+  position:fixed;
+  bottom:10px;
+  width:100%;
+  text-align:center;
+  font-size:12px;
+  opacity:0.6;
+}
+.footer a{
+  color:#ff5c8a;
+  text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" loop muted>
+  <source src="Dudu.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PAGE 1 -->
+<div class="page active">
+  <video src="Dudu03.mp4" autoplay loop muted></video>
+  <h2>Do you love me? 🥰</h2>
+  <p>please baby</p>
+  <div class="btns">
+    <button class="yes" onclick="goLast()">Yes</button>
+    <button class="no" onclick="goNext()">No</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page">
+  <video src="Dudu02.mp4" autoplay loop muted></video>
+  <h2>Ek aur baar soch lo 😣</h2>
+  <p>kyu aisa kar rahi ho</p>
+  <div class="btns">
+    <button class="yes" onclick="goLast()">Yes</button>
+    <button class="no" onclick="goNext()">No</button>
+  </div>
+</div>
+
+<!-- PAGE 3 -->
+<div class="page">
+  <video src="Dudu01.mp4" autoplay loop muted></video>
+  <h2>Please think again 🥺</h2>
+  <p>itni jaldi nahi matt bolo</p>
+  <div class="btns">
+    <button class="yes" onclick="goLast()">Yes</button>
+    <button class="no" onclick="goNext()">No</button>
+  </div>
+</div>
+
+<!-- PAGE 4 (NO RUNS) -->
+<div class="page">
+  <video src="Dudu04.mp4" autoplay loop muted></video>
+  <h2>Baby maan jao na 😭</h2>
+  <p>kitna bhav khaogi</p>
+  <div class="btns">
+    <button class="yes" onclick="goLast()">Yes</button>
+    <button class="no" id="runBtn">No</button>
+  </div>
+</div>
+
+<!-- FINAL PAGE -->
+<div class="page">
+  <video src="Dudu05.mp4" autoplay loop muted></video>
+  <h2>Hehehehe, I knew it! 😘</h2>
+  <p>Love you a lot ❤️</p>
+</div>
+
+<!-- BRANDING -->
+<div class="footer">
+  Made with ❤️ by 
+  <a href="https://www.instagram.com/sujal_surprise_links" target="_blank">
+    @sujal_surprise_links
+  </a>
+</div>
+
+<script>
+let currentPage = 0;
+const pages = document.querySelectorAll('.page');
+const music = document.getElementById('bgMusic');
+
+function startMusic(){
+  if(music.paused){
+    music.muted = false;
+    music.play();
+  }
+}
+
+function goNext(){
+  startMusic();
+  pages[currentPage].classList.remove('active');
+  currentPage++;
+  pages[currentPage].classList.add('active');
+}
+
+function goLast(){
+  startMusic();
+  pages[currentPage].classList.remove('active');
+  currentPage = pages.length - 1;
+  pages[currentPage].classList.add('active');
+}
+
+// No button bhagta rahega (page 4)
+const runBtn = document.getElementById('runBtn');
+if(runBtn){
+  runBtn.addEventListener('mouseover', ()=>{
+    const x = Math.random() * 220 - 110;
+    const y = Math.random() * 160 - 80;
+    runBtn.style.transform = `translate(${x}px, ${y}px)`;
+  });
+}
+</script>
+
+</body>
+</html>
